@@ -1,0 +1,13 @@
+
+diff -Naur a/kernel/Makefile b/kernel/Makefile
+--- a/kernel/Makefile    2014-11-08 04:17:52.657700773 +0100
++++ b/kernel/Makefile    2014-11-08 04:19:26.030800405 +0100
+@@ -1,5 +1,5 @@
+
+-LINUX ?= /lib/modules/$(shell uname -r)/build
++LINUX ?= $(KERNEL_SRC)
+
+ FMC_DRV ?= $(shell ../check-fmc-bus)
+ export FMC_DRV
+
+

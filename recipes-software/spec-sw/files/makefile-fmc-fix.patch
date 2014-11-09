@@ -1,0 +1,12 @@
+
+diff -Naur a/fmc-bus/kernel/Makefile b/fmc-bus/kernel/Makefile
+--- a/fmc-bus/kernel/Makefile     2014-11-08 04:36:30.957186266 +0100
++++ b/fmc-bus/kernel/Makefile     2014-11-08 04:50:12.313185206 +0100
+@@ -1,5 +1,5 @@
+
+-LINUX ?= /lib/modules/$(shell uname -r)/build
++LINUX ?= $(KERNEL_SRC)
+
+ ccflags-y += -I$M/include
+
+

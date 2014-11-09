@@ -1,0 +1,20 @@
+
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile    2014-11-09 06:17:52.657700773 +0100
++++ b/Makefile    2014-11-09 06:19:26.030800405 +0100
+@@ -1,13 +1,6 @@
+
+-# We have a problem here: this package may be a submodule of something
+-# else (for example: fine-delay). If this is the case, fmc-bus is on ../
+-# This external script returns the pathname of the "kernel" subdir of fmc-bus
+-FMC_DRV ?= $(shell ./check-fmc-bus)
+-export FMC_DRV
+-
+-RUNME := $(shell test -d $(FMC_DRV) || git submodule update --init)
+-
+-DIRS = $(FMC_DRV) kernel tools
++# This is a dirty hack: just compile the tools
++DIRS = tools
+
+ all clean modules install modules_install:
+        for d in $(DIRS); do $(MAKE) -C $$d $@ || exit 1; done
