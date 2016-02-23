@@ -1,0 +1,11 @@
+diff -Naur a/fmc-bus/tools/Makefile b/fmc-bus/tools/Makefile
+--- a/fmc-bus/tools/Makefile	2016-02-21 04:32:36.547159230 +0100
++++ b/fmc-bus/tools/Makefile	2016-02-21 04:34:32.755904847 +0100
+@@ -11,6 +11,7 @@
+ GIT_VERSION := $(shell git describe --dirty --long --tags)
+ CFLAGS = -Wall -ggdb -O2 -I../kernel/include $(EXTRACFLAGS)
+ CFLAGS += -DGIT_VERSION="\"$(GIT_VERSION)\""
++CFLAGS += --sysroot=${CROSS_COMPILE_SYSROOT}
+ PROGS = fru-dump fmc-mem
+ 
+ all: $(PROGS)

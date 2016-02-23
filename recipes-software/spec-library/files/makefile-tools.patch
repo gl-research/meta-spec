@@ -1,0 +1,20 @@
+diff -Naur a/tools/Makefile b/tools/Makefile
+--- a/tools/Makefile	2016-02-21 03:58:58.163683244 +0100
++++ b/tools/Makefile	2016-02-21 04:13:12.787749303 +0100
+@@ -10,6 +10,7 @@
+ GIT_VERSION := $(shell git describe --dirty --long --tags)
+ CFLAGS += -ggdb -Wall -fPIC -I../kernel $(EXTRACFLAGS)
+ CFLAGS += -DGIT_VERSION=\"$(GIT_VERSION)\"
++CFLAGS += --sysroot=${CROSS_COMPILE_SYSROOT}
+ 
+ LIB = libspec.a
+ LIBOBJ = speclib.o loader-ll.o
+@@ -31,7 +32,7 @@
+ 		${CC} $(CFLAGS) -c $^ -I .
+ 
+ $(LIBSHARED): $(LIB)
+-	$(CC) -shared -o $@ -Wl,--whole-archive $^ -Wl,--no-whole-archive
++	$(CC) --sysroot=${CROSS_COMPILE_SYSROOT} -shared -o $@ -Wl,--whole-archive $^ -Wl,--no-whole-archive
+ 
+ 
+ clean:

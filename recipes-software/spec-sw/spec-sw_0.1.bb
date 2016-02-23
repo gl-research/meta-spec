@@ -11,10 +11,15 @@ PV = "0.1"
 
 SRC_URI = "git://ohwr.org/fmc-projects/spec/spec-sw.git \
            file://makefile-fix.patch \
+           file://makefile-tools.patch \
+           file://makefile-fmc-tools.patch \
+           file://makefile-fmc-tools-ipmi.patch \
            file://makefile-fmc-fix.patch"
-SRCREV = "eb9b9d03e3f54657fe29fca93021e2b45380da05"
+SRCREV = "d56cd47c9ba68630b907488288c57e251eb5c2d3"
 
 S = "${WORKDIR}/git"
+
+export CROSS_COMPILE_SYSROOT = "${STAGING_DIR_TARGET}"
 
 
 # Most of spec-sw is in git submodules that still need to be fetched.

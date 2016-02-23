@@ -1,0 +1,11 @@
+diff -Naur a/fmc-bus/tools/libipmi/Makefile b/fmc-bus/tools/libipmi/Makefile
+--- a/fmc-bus/tools/libipmi/Makefile	2016-02-21 04:44:20.171454270 +0100
++++ b/fmc-bus/tools/libipmi/Makefile	2016-02-21 04:45:32.193437476 +0100
+@@ -15,6 +15,7 @@
+ GIT_VERSION := $(shell git describe --dirty --long --tags)
+ CFLAGS+=-fPIC -shared -Wall -Wextra -ggdb $(EXTRACFLAGS)
+ CFLAGS += -DGIT_VERSION="\"$(GIT_VERSION)\""
++CFLAGS += --sysroot=${CROSS_COMPILE_SYSROOT}
+ 
+ all: $(OUT) $(OUT_SO)
+ 
